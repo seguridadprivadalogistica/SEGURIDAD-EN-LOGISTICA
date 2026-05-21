@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI27 | Predictive Logistics Intelligence</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Lexend+Deca:wght@200;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ffffff;
+            --accent: #d4af37;
+            --bg-dark: #0a0a0a;
+            --bg-card: #141414;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--primary);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, .logo-text {
+            font-family: 'Lexend Deca', sans-serif;
+        }
+
+        .glass-nav {
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .hero-gradient {
+            background: radial-gradient(circle at center, rgba(40, 40, 40, 0.3) 0%, rgba(10, 10, 10, 1) 70%);
+        }
+
+        .premium-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .premium-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-10px);
+        }
+
+        .btn-gold {
+            background: linear-gradient(135deg, #d4af37 0%, #b8860b 100%);
+            color: black;
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+
+        .btn-gold:hover {
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+            transform: scale(1.05);
+        }
+
+        .image-overlay {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .image-overlay::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to bottom, transparent 0%, var(--bg-dark) 100%);
+        }
+
+        .nav-link {
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; width: 0; height: 1px;
+            background-color: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .group:hover .submenu {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .submenu {
+            display: none;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            min-width: 240px;
+        }
+
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* Gallery image section */
+        .gallery-visual {
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            transition: border-color 0.3s ease;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .gallery-visual:hover {
+            border-color: rgba(212, 175, 55, 0.8);
+        }
+
+        /* Stat cards */
+        .stat-card {
+            background: #141414;
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            border-radius: 4px;
+            padding: 2rem;
+            text-align: center;
+            transition: border-color 0.3s ease;
+        }
+        .stat-card:hover {
+            border-color: #d4af37;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================================
+         NAVEGACIÓN
+    ============================================================ -->
+    <nav class="fixed w-full z-50 glass-nav">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+
+            <!-- LOGO AI27 (SVG inline) -->
+            <div class="flex items-center space-x-3 cursor-pointer">
+                <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Escudo base -->
+                    <path d="M22 2 L40 10 L40 24 C40 34 32 40 22 43 C12 40 4 34 4 24 L4 10 Z"
+                          fill="none" stroke="#d4af37" stroke-width="1.5"/>
+                    <!-- Línea horizontal interna -->
+                    <line x1="10" y1="22" x2="34" y2="22" stroke="#d4af37" stroke-width="0.8" opacity="0.4"/>
+                    <!-- Texto "27" -->
+                    <text x="22" y="26" text-anchor="middle" font-family="'Lexend Deca',sans-serif"
+                          font-size="13" font-weight="700" fill="#d4af37">27</text>
+                    <!-- Punto de señal arriba derecha -->
+                    <circle cx="36" cy="8" r="2.5" fill="#d4af37" opacity="0.8"/>
+                    <circle cx="36" cy="8" r="5" fill="none" stroke="#d4af37" stroke-width="0.6" opacity="0.4"/>
+                </svg>
+                <span class="logo-text text-2xl font-bold tracking-tighter">AI<span class="text-[#d4af37]">27</span></span>
+            </div>
+
+            <!-- Menú Desktop -->
+            <div class="hidden md:flex space-x-8 items-center">
+
+                <!-- Soluciones -->
+                <div class="relative group">
+                    <a href="#" class="nav-link text-sm uppercase tracking-widest">
+                        Soluciones <i class="fas fa-chevron-down text-[10px] ml-1"></i>
+                    </a>
+                    <div class="absolute top-full left-0 mt-2 submenu bg-[#141414] border border-white/10 p-4 rounded-sm z-50">
+                        <a href="#ais-secure" class="block py-2 text-xs hover:text-[#d4af37] transition-colors">AIS Secure Mobility</a>
+                        <a href="#ain" class="block py-2 text-xs hover:text-[#d4af37] transition-colors">AIN – Monitorea tu Flota</a>
+                        <a href="#custody" class="block py-2 text-xs hover:text-[#d4af37] transition-colors">Custodia Física Elite</a>
+                    </div>
+                </div>
+
+                <!-- Galería Visual -->
+                <div class="relative group">
+                    <a href="#galeria" class="nav-link text-sm uppercase tracking-widest">
+                        Galería Visual <i class="fas fa-chevron-down text-[10px] ml-1"></i>
+                    </a>
+                    <div class="absolute top-full left-0 mt-2 submenu bg-[#141414] border border-white/10 p-4 rounded-sm z-50">
+                        <a href="#visual-ai" class="block py-2 text-xs hover:text-[#d4af37] transition-colors">Visual: Inteligencia AI</a>
+                        <a href="#visual-ruta" class="block py-2 text-xs hover:text-[#d4af37] transition-colors">Visual: Custodia en Ruta</a>
+                        <a href="#visual-drone" class="block py-2 text-xs hover:text-[#d4af37] transition-colors">Visual: Tecnología Drone</a>
+                    </div>
+                </div>
+
+                <a href="#operaciones" class="nav-link text-sm uppercase tracking-widest">Operaciones</a>
+                <a href="#contacto" class="btn-gold px-6 py-2 rounded-sm text-xs tracking-widest uppercase">Consultoría VIP</a>
+            </div>
+
+            <div class="md:hidden">
+                <i class="fas fa-bars text-2xl"></i>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- ============================================================
+         HERO SECTION
+    ============================================================ -->
+    <section class="relative min-h-screen flex items-center justify-center hero-gradient px-6 overflow-hidden pt-20">
+        <div class="absolute inset-0 opacity-20">
+            <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-[#d4af37] rounded-full blur-[150px]"></div>
+            <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-white rounded-full blur-[150px]"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center relative z-10">
+            <div>
+                <h2 class="text-[#d4af37] font-semibold tracking-[0.3em] uppercase mb-4 text-sm">Predictive Intelligence</h2>
+                <h1 class="text-5xl md:text-7xl font-bold leading-tight mb-6">
+                    El Futuro de la <br> Seguridad Logística
+                </h1>
+                <p class="text-gray-400 text-lg mb-8 max-w-lg font-light leading-relaxed">
+                    No solo reaccionamos. Predecimos. AI27 utiliza algoritmos avanzados para neutralizar riesgos antes de que ocurran en las rutas más críticas de América.
+                </p>
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6">
+                    <a href="#contacto" class="btn-gold px-10 py-4 rounded-sm uppercase text-sm tracking-widest text-center">Comenzar Ahora</a>
+                    <a href="#operaciones" class="border border-white/20 hover:bg-white/10 px-10 py-4 rounded-sm uppercase text-sm tracking-widest transition-all text-center">Ver Operaciones</a>
+                </div>
+            </div>
+
+            <!-- IMAGEN HERO: SVG visual de mapa de rutas con IA -->
+            <div class="relative">
+                <div class="animate-float rounded-2xl overflow-hidden border border-white/10 shadow-2xl gallery-visual" id="visual-ai">
+                    <svg viewBox="0 0 600 380" xmlns="http://www.w3.org/2000/svg" width="100%">
+                        <defs>
+                            <radialGradient id="bgGrad" cx="50%" cy="50%" r="70%">
+                                <stop offset="0%" stop-color="#1a1a1a"/>
+                                <stop offset="100%" stop-color="#0a0a0a"/>
+                            </radialGradient>
+                            <filter id="glow">
+                                <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                                <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                            </filter>
+                            <linearGradient id="lineGold" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" stop-color="#d4af37" stop-opacity="0"/>
+                                <stop offset="50%" stop-color="#d4af37" stop-opacity="1"/>
+                                <stop offset="100%" stop-color="#d4af37" stop-opacity="0"/>
+                            </linearGradient>
+                        </defs>
+
+                        <rect width="600" height="380" fill="url(#bgGrad)"/>
+
+                        <g opacity="0.12">
+                            <line x1="0" y1="76" x2="600" y2="76" stroke="#d4af37" stroke-width="0.4"/>
+                            <line x1="0" y1="152" x2="600" y2="152" stroke="#d4af37" stroke-width="0.4"/>
+                            <line x1="0" y1="228" x2="600" y2="228" stroke="#d4af37" stroke-width="0.4"/>
+                            <line x1="0" y1="304" x2="600" y2="304" stroke="#d4af37" stroke-width="0.4"/>
+                            <line x1="120" y1="0" x2="120" y2="380" stroke="#d4af37" stroke-width="0.4"/>
+                            <line x1="240" y1="0" x2="240" y2="380" stroke="#d4af37" stroke-width="0.4"/>
+                            <line x1="360" y1="0" x2="360" y2="380" stroke="#d4af37" stroke-width="0.4"/>
+                            <line x1="480" y1="0" x2="480" y2="380" stroke="#d4af37" stroke-width="0.4"/>
+                        </g>
+
+                        <path d="M80 300 Q200 100 520 80" stroke="url(#lineGold)" stroke-width="1.5" fill="none" opacity="0.7"/>
+                        <path d="M100 320 Q280 200 480 240" stroke="#d4af37" stroke-width="1" fill="none" opacity="0.4" stroke-dasharray="6,4"/>
+                        <path d="M60 200 Q300 280 540 160" stroke="#ffffff" stroke-width="0.8" fill="none" opacity="0.15" stroke-dasharray="3,6"/>
+
+                        <circle cx="80" cy="300" r="10" fill="#d4af37" opacity="0.9" filter="url(#glow)"/>
+                        <circle cx="80" cy="300" r="18" fill="none" stroke="#d4af37" stroke-width="1" opacity="0.5"/>
+                        <circle cx="80" cy="300" r="28" fill="none" stroke="#d4af37" stroke-width="0.5" opacity="0.2"/>
+                        <text x="80" y="335" text-anchor="middle" font-family="'Lexend Deca',sans-serif" font-size="8" fill="#d4af37" opacity="0.8">CDMX</text>
+
+                        <circle cx="300" cy="170" r="7" fill="#ffffff" opacity="0.6" filter="url(#glow)"/>
+                        <circle cx="300" cy="170" r="14" fill="none" stroke="#ffffff" stroke-width="0.8" opacity="0.3"/>
+                        <text x="300" y="157" text-anchor="middle" font-family="'Lexend Deca',sans-serif" font-size="7" fill="#ffffff" opacity="0.5">ZONA RIESGO</text>
+
+                        <circle cx="520" cy="80" r="10" fill="#d4af37" opacity="0.9" filter="url(#glow)"/>
+                        <circle cx="520" cy="80" r="18" fill="none" stroke="#d4af37" stroke-width="1" opacity="0.5"/>
+                        <text x="520" y="65" text-anchor="middle" font-family="'Lexend Deca',sans-serif" font-size="8" fill="#d4af37" opacity="0.8">DESTINO</text>
+
+                        <g transform="translate(220, 215) rotate(-30)">
+                            <rect x="-18" y="-8" width="36" height="16" rx="3" fill="#1a1a1a" stroke="#d4af37" stroke-width="1.5"/>
+                            <rect x="14" y="-5" width="12" height="10" rx="2" fill="#d4af37" opacity="0.8"/>
+                            <circle cx="-10" cy="9" r="4" fill="#333" stroke="#d4af37" stroke-width="1"/>
+                            <circle cx="10" cy="9" r="4" fill="#333" stroke="#d4af37" stroke-width="1"/>
+                        </g>
+
+                        <g transform="translate(300, 60)">
+                            <line x1="0" y1="0" x2="-20" y2="20" stroke="#d4af37" stroke-width="1.5" opacity="0.7"/>
+                            <line x1="0" y1="0" x2="20" y2="20" stroke="#d4af37" stroke-width="1.5" opacity="0.7"/>
+                            <circle cx="0" cy="0" r="6" fill="#d4af37" opacity="0.9" filter="url(#glow)"/>
+                            <path d="M-30,-15 Q0,-35 30,-15" stroke="#d4af37" stroke-width="1" fill="none" opacity="0.5"/>
+                            <path d="M-20,-8 Q0,-22 20,-8" stroke="#d4af37" stroke-width="1" fill="none" opacity="0.7"/>
+                        </g>
+
+                        <g transform="translate(450, 260)">
+                            <text x="0" y="-5" font-family="'Lexend Deca',sans-serif" font-size="7" fill="#d4af37" opacity="0.7">RIESGO PREDICTIVO</text>
+                            <rect x="0" y="0" width="50" height="5" rx="2" fill="#333"/>
+                            <rect x="0" y="0" width="4" height="5" rx="2" fill="#d4af37" opacity="0.9"/>
+                            <text x="56" y="7" font-family="'Inter',sans-serif" font-size="7" fill="#d4af37">0.04%</text>
+                        </g>
+
+                        <text x="300" y="360" text-anchor="middle" font-family="'Lexend Deca',sans-serif" font-size="11" fill="#d4af37" opacity="0.4" letter-spacing="8">AI27 · PREDICTIVE INTELLIGENCE</text>
+                    </svg>
+                </div>
+
+                <div class="absolute -bottom-6 -left-6 bg-[#141414] p-6 border border-[#d4af37]/30 rounded-sm">
+                    <p class="text-3xl font-bold text-[#d4af37]">0.04%</p>
+                    <p class="text-[10px] uppercase tracking-widest text-gray-400">Siniestralidad en Operaciones</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ============================================================
+         GALERÍA VISUAL (3 imágenes SVG)
+    ============================================================ -->
+    <section id="galeria" class="py-24 bg-black">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h3 class="text-[#d4af37] font-semibold tracking-[0.3em] uppercase mb-2">Galería Visual</h3>
+                <h2 class="text-4xl font-bold">Nuestra Tecnología en Acción</h2>
+                <p class="text-gray-500 mt-4 font-light max-w-xl mx-auto">Conoce visualmente las capacidades que hacen de AI27 el líder en seguridad logística predictiva.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+
+                <!-- IMAGEN 1: Inteligencia AI / Dashboard -->
+                <div id="visual-ai-gallery" class="gallery-visual group cursor-pointer">
+                    <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" width="100%">
+                        <defs>
+                            <linearGradient id="dashGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#111111"/>
+                                <stop offset="100%" stop-color="#0a0a0a"/>
+                            </linearGradient>
+                        </defs>
+                        <rect width="400" height="300" fill="url(#dashGrad)"/>
+                        <rect x="20" y="20" width="360" height="260" rx="6" fill="none" stroke="#d4af37" stroke-width="1" opacity="0.4"/>
+                        <rect x="20" y="20" width="360" height="30" rx="6" fill="#1a1a1a"/>
+                        <circle cx="40" cy="35" r="4" fill="#d4af37" opacity="0.7"/>
+                        <circle cx="56" cy="35" r="4" fill="#555" opacity="0.7"/>
+                        <circle cx="72" cy="35" r="4" fill="#555" opacity="0.7"/>
+                        <text x="200" y="39" text-anchor="middle" font-family="'Lexend Deca',sans-serif" font-size="8" fill="#d4af37" opacity="0.8">AIS SECURE MOBILITY · DASHBOARD</text>
+                        <polyline points="40,200 80,170 120,180 160,130 200,140 240,100 280,110 340,80"
+                                  stroke="#d4af37" stroke-width="2" fill="none" opacity="0.9"/>
+                        <polygon points="40,200 80,170 120,180 160,130 200,140 240,100 280,110 340,80 340,240 40,240"
+                                 fill="#d4af37" opacity="0.05"/>
+                        <circle cx="160" cy="130" r="5" fill="#d4af37" opacity="0.9"/>
+                        <circle cx="240" cy="100" r="5" fill="#d4af37" opacity="0.9"/>
+                        <circle cx="340" cy="80" r="5" fill="#ffffff" opacity="0.7"/>
+                        <g transform="translate(25, 70)">
+                            <text x="0" y="0" font-family="'Lexend Deca',sans-serif" font-size="7" fill="#aaa">VIAJES MONITOREADOS</text>
+                            <text x="0" y="14" font-family="'Lexend Deca',sans-serif" font-size="16" font-weight="700" fill="#d4af37">900K</text>
+                            <text x="0" y="26" font-family="'Inter',sans-serif" font-size="7" fill="#555">al mes</text>
+                            <text x="0" y="52" font-family="'Lexend Deca',sans-serif" font-size="7" fill="#aaa">PREDICCIONES DIARIAS</text>
+                            <text x="0" y="66" font-family="'Lexend Deca',sans-serif" font-size="16" font-weight="700" fill="#ffffff">704K</text>
+                        </g>
+                        <g transform="translate(310, 75)" opacity="0.7">
+                            <circle cx="0" cy="0" r="22" fill="none" stroke="#d4af37" stroke-width="1"/>
+                            <text x="0" y="5" text-anchor="middle" font-family="'Lexend Deca',sans-serif" font-size="14" fill="#d4af37">AI</text>
+                        </g>
+                        <line x1="40" y1="60" x2="40" y2="245" stroke="#333" stroke-width="1"/>
+                        <line x1="40" y1="245" x2="355" y2="245" stroke="#333" stroke-width="1"/>
+                        <text x="200" y="270" text-anchor="middle" font-family="'Inter',sans-serif" font-size="7" fill="#555">INTELIGENCIA PREDICTIVA · ANÁLISIS EN TIEMPO REAL</text>
+                    </svg>
+                    <div class="bg-[#141414] px-5 py-4 border-t border-white/5">
+                        <p class="text-xs uppercase tracking-widest text-[#d4af37] font-semibold">Inteligencia AI</p>
+                        <p class="text-gray-500 text-xs mt-1">Dashboard de predicción y análisis de riesgo en tiempo real.</p>
+                    </div>
+                </div>
+
+                <!-- IMAGEN 2: Custodia en Ruta -->
+                <div id="visual-ruta" class="gallery-visual group cursor-pointer">
+                    <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" width="100%">
+                        <defs>
+                            <radialGradient id="routeGrad" cx="40%" cy="70%" r="60%">
+                                <stop offset="0%" stop-color="#181818"/>
+                                <stop offset="100%" stop-color="#090909"/>
+                            </radialGradient>
+                        </defs>
+                        <rect width="400" height="300" fill="url(#routeGrad)"/>
+                        <path d="M0 240 Q200 180 400 200" stroke="#222" stroke-width="40" fill="none"/>
+                        <path d="M0 240 Q200 180 400 200" stroke="#1a1a1a" stroke-width="36" fill="none"/>
+                        <path d="M0 238 Q200 178 400 198" stroke="#333" stroke-width="1.5" fill="none" stroke-dasharray="20,15"/>
+                        <g transform="translate(180, 175)">
+                            <rect x="-80" y="-25" width="100" height="40" rx="3" fill="#1a1a1a" stroke="#d4af37" stroke-width="1.5"/>
+                            <rect x="20" y="-28" width="45" height="43" rx="4" fill="#222" stroke="#d4af37" stroke-width="1.5"/>
+                            <rect x="28" y="-22" width="22" height="18" rx="2" fill="#0a0a0a" stroke="#d4af37" stroke-width="0.8" opacity="0.7"/>
+                            <circle cx="-60" cy="20" r="8" fill="#333" stroke="#d4af37" stroke-width="1.5"/>
+                            <circle cx="-40" cy="20" r="8" fill="#333" stroke="#d4af37" stroke-width="1.5"/>
+                            <circle cx="30" cy="20" r="8" fill="#333" stroke="#d4af37" stroke-width="1.5"/>
+                            <circle cx="50" cy="20" r="8" fill="#333" stroke="#d4af37" stroke-width="1.5"/>
+                            <text x="-30" y="5" text-anchor="middle" font-family="'Lexend Deca',sans-serif" font-size="10" font-weight="700" fill="#d4af37" opacity="0.8">AI27</text>
+                            <text x="39" y="-9" text-anchor="middle" font-family="'Lexend Deca',sans-serif" font-size="8" fill="#d4af37" opacity="0.9">⚑</text>
+                        </g>
+                        <g transform="translate(300, 183)">
+                            <rect x="-20" y="-12" width="40" height="22" rx="4" fill="#1e1e1e" stroke="#ffffff" stroke-width="1" opacity="0.7"/>
+                            <rect x="12" y="-15" width="16" height="20" rx="3" fill="#222" stroke="#ffffff" stroke-width="0.8" opacity="0.6"/>
+                            <circle cx="-12" cy="13" r="5" fill="#333" stroke="#fff" stroke-width="1" opacity="0.6"/>
+                            <circle cx="10" cy="13" r="5" fill="#333" stroke="#fff" stroke-width="1" opacity="0.6"/>
+                            <rect x="-16" y="-17" width="32" height="5" rx="2" fill="#d4af37" opacity="0.9"/>
+                        </g>
+                        <g transform="translate(183, 130)">
+                            <path d="M0 -18 L12 -12 L12 0 C12 8 6 14 0 16 C-6 14 -12 8 -12 0 L-12 -12 Z"
+                                  fill="none" stroke="#d4af37" stroke-width="1.5" opacity="0.8"/>
+                            <path d="M-5 -2 L-2 2 L6 -6" stroke="#d4af37" stroke-width="2" fill="none" stroke-linecap="round"/>
+                            <line x1="0" y1="16" x2="0" y2="28" stroke="#d4af37" stroke-width="0.8" stroke-dasharray="3,3" opacity="0.5"/>
+                        </g>
+                        <g transform="translate(30, 40)">
+                            <rect x="0" y="0" width="140" height="55" rx="4" fill="#141414" stroke="#d4af37" stroke-width="0.8" opacity="0.8"/>
+                            <text x="10" y="18" font-family="'Lexend Deca',sans-serif" font-size="7" fill="#d4af37" letter-spacing="2">COBERTURA</text>
+                            <text x="10" y="35" font-family="'Lexend Deca',sans-serif" font-size="16" font-weight="700" fill="#ffffff">Nacional</text>
+                            <text x="10" y="49" font-family="'Inter',sans-serif" font-size="7" fill="#555">e Internacional · América</text>
+                        </g>
+                        <g opacity="0.3">
+                            <path d="M183 130 Q250 60 340 30" stroke="#d4af37" stroke-width="0.8" fill="none" stroke-dasharray="4,4"/>
+                            <circle cx="340" cy="30" r="4" fill="#d4af37" opacity="0.8"/>
+                            <circle cx="340" cy="30" r="9" fill="none" stroke="#d4af37" stroke-width="0.6"/>
+                        </g>
+                        <text x="200" y="285" text-anchor="middle" font-family="'Inter',sans-serif" font-size="7" fill="#444">CUSTODIA FÍSICA ELITE · PROTECCIÓN GRADO MILITAR</text>
+                    </svg>
+                    <div class="bg-[#141414] px-5 py-4 border-t border-white/5">
+                        <p class="text-xs uppercase tracking-widest text-[#d4af37] font-semibold">Custodia en Ruta</p>
+                        <p class="text-gray-500 text-xs mt-1">Escoltas especializadas y protocolos de seguridad para cada embarque.</p>
+                    </div>
+                </div>
+
+                <!-- IMAGEN 3: Tecnología Drone / Monitoreo Aéreo -->
+                <div id="visual-drone" class="gallery-visual group cursor-pointer">
+                    <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" width="100%">
+                        <defs>
+                            <radialGradient id="skyGrad" cx="50%" cy="30%" r="70%">
+                                <stop offset="0%" stop-color="#141414"/>
+                                <stop offset="100%" stop-color="#080808"/>
+                            </radialGradient>
+                            <radialGradient id="scanLight" cx="50%" cy="50%" r="50%">
+                                <stop offset="0%" stop-color="#d4af37" stop-opacity="0.15"/>
+                                <stop offset="100%" stop-color="#d4af37" stop-opacity="0"/>
+                            </radialGradient>
+                        </defs>
+                        <rect width="400" height="300" fill="url(#skyGrad)"/>
+                        <rect x="0" y="220" width="400" height="80" fill="#0f0f0f"/>
+                        <path d="M0 220 Q200 210 400 220" stroke="#1a1a1a" stroke-width="2" fill="none"/>
+                        <rect x="150" y="222" width="100" height="78" fill="#151515"/>
+                        <line x1="200" y1="225" x2="200" y2="300" stroke="#333" stroke-width="1.5" stroke-dasharray="12,10"/>
+                        <g transform="translate(200, 255)">
+                            <rect x="-25" y="-8" width="50" height="16" rx="3" fill="#252525" stroke="#d4af37" stroke-width="1"/>
+                            <rect x="18" y="-5" width="14" height="10" rx="2" fill="#1e1e1e" stroke="#d4af37" stroke-width="0.8"/>
+                        </g>
+                        <g transform="translate(200, 120)">
+                            <rect x="-18" y="-12" width="36" height="24" rx="5" fill="#1a1a1a" stroke="#d4af37" stroke-width="1.8"/>
+                            <circle cx="0" cy="6" r="6" fill="#0a0a0a" stroke="#d4af37" stroke-width="1.2"/>
+                            <circle cx="0" cy="6" r="3" fill="#d4af37" opacity="0.6"/>
+                            <line x1="-18" y1="-8" x2="-50" y2="-30" stroke="#d4af37" stroke-width="1.5"/>
+                            <line x1="18" y1="-8" x2="50" y2="-30" stroke="#d4af37" stroke-width="1.5"/>
+                            <line x1="-18" y1="8" x2="-50" y2="30" stroke="#d4af37" stroke-width="1.5"/>
+                            <line x1="18" y1="8" x2="50" y2="30" stroke="#d4af37" stroke-width="1.5"/>
+                            <ellipse cx="-50" cy="-30" rx="14" ry="5" fill="none" stroke="#d4af37" stroke-width="1.2" opacity="0.7"/>
+                            <ellipse cx="50" cy="-30" rx="14" ry="5" fill="none" stroke="#d4af37" stroke-width="1.2" opacity="0.7"/>
+                            <ellipse cx="-50" cy="30" rx="14" ry="5" fill="none" stroke="#d4af37" stroke-width="1.2" opacity="0.7"/>
+                            <ellipse cx="50" cy="30" rx="14" ry="5" fill="none" stroke="#d4af37" stroke-width="1.2" opacity="0.7"/>
+                            <circle cx="0" cy="-8" r="2.5" fill="#d4af37" opacity="0.9"/>
+                        </g>
+                        <path d="M200 132 L130 230 L270 230 Z" fill="url(#scanLight)"/>
+                        <rect x="172" y="242" width="56" height="26" rx="2" fill="none" stroke="#d4af37" stroke-width="1" opacity="0.7"/>
+                        <line x1="172" y1="242" x2="180" y2="250" stroke="#d4af37" stroke-width="1" opacity="0.5"/>
+                        <line x1="228" y1="242" x2="220" y2="250" stroke="#d4af37" stroke-width="1" opacity="0.5"/>
+                        <line x1="172" y1="268" x2="180" y2="260" stroke="#d4af37" stroke-width="1" opacity="0.5"/>
+                        <line x1="228" y1="268" x2="220" y2="260" stroke="#d4af37" stroke-width="1" opacity="0.5"/>
+                        <g transform="translate(248, 150)">
+                            <rect x="0" y="0" width="120" height="70" rx="3" fill="#111" stroke="#d4af37" stroke-width="0.6" opacity="0.8"/>
+                            <text x="8" y="15" font-family="'Lexend Deca',sans-serif" font-size="6.5" fill="#d4af37" letter-spacing="1">SCAN ACTIVO</text>
+                            <line x1="8" y1="20" x2="112" y2="20" stroke="#d4af37" stroke-width="0.4" opacity="0.4"/>
+                            <text x="8" y="33" font-family="'Inter',sans-serif" font-size="7" fill="#888">Altitud: 120 m</text>
+                            <text x="8" y="45" font-family="'Inter',sans-serif" font-size="7" fill="#888">Cobertura: 360°</text>
+                            <text x="8" y="57" font-family="'Inter',sans-serif" font-size="7" fill="#d4af37">● RIESGO: NULO</text>
+                        </g>
+                        <g transform="translate(200, 120)" opacity="0.4">
+                            <path d="M-55 -55 Q-80 -80 -55 -105" stroke="#d4af37" stroke-width="1" fill="none"/>
+                            <path d="M-45 -50 Q-65 -70 -45 -90" stroke="#d4af37" stroke-width="1" fill="none"/>
+                        </g>
+                        <text x="200" y="292" text-anchor="middle" font-family="'Inter',sans-serif" font-size="7" fill="#444">AIN · MONITOREO AÉREO INTELIGENTE 24/7</text>
+                    </svg>
+                    <div class="bg-[#141414] px-5 py-4 border-t border-white/5">
+                        <p class="text-xs uppercase tracking-widest text-[#d4af37] font-semibold">Tecnología Drone</p>
+                        <p class="text-gray-500 text-xs mt-1">Vigilancia aérea táctica con cobertura de 360° en tramos críticos.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ============================================================
+         PRODUCTOS Y SERVICIOS
+    ============================================================ -->
+    <section id="ais-secure" class="py-24 bg-[#0d0d0d]">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-20">
+                <h3 class="text-[#d4af37] font-semibold tracking-[0.3em] uppercase mb-2">Productos y Servicios</h3>
+                <h2 class="text-4xl font-bold">Protección Multidimensional</h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12 mb-16">
+
+                <!-- AIS SECURE MOBILITY -->
+                <div class="premium-card p-10 group">
+                    <div class="flex items-center space-x-4 mb-6">
+                        <div class="w-12 h-12 border border-[#d4af37]/50 rounded-sm flex items-center justify-center">
+                            <i class="fas fa-shield-alt text-2xl text-[#d4af37]"></i>
+                        </div>
+                        <div>
+                            <p class="text-[10px] uppercase tracking-widest text-gray-500">Plataforma Tecnológica</p>
+                            <h4 class="text-xl font-bold uppercase tracking-tighter">AIS Secure Mobility</h4>
+                        </div>
+                    </div>
+                    <p class="text-gray-500 font-light text-sm leading-relaxed mb-6">
+                        Obtén el control total de tus embarques con análisis de riesgo en tiempo real, recomendaciones para disminuir el porcentaje de riesgo y reportes al finalizar cada viaje.
+                    </p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-start space-x-3 text-sm text-gray-400">
+                            <i class="fas fa-check text-[#d4af37] mt-0.5"></i>
+                            <span>Alertas automáticas sobre sucesos relevantes en tiempo real</span>
+                        </li>
+                        <li class="flex items-start space-x-3 text-sm text-gray-400">
+                            <i class="fas fa-check text-[#d4af37] mt-0.5"></i>
+                            <span>Implementación simplificada gracias a tecnología RPA</span>
+                        </li>
+                        <li class="flex items-start space-x-3 text-sm text-gray-400">
+                            <i class="fas fa-check text-[#d4af37] mt-0.5"></i>
+                            <span>Contrata protección acorde al volumen de viajes en tiempo real</span>
+                        </li>
+                    </ul>
+                    <a href="#contacto" class="text-[10px] uppercase tracking-[0.2em] font-bold text-[#d4af37] hover:underline">Conocer más &rarr;</a>
+                </div>
+
+                <!-- AIN – MONITOREA TU FLOTA -->
+                <div id="ain" class="premium-card p-10 group">
+                    <div class="flex items-center space-x-4 mb-6">
+                        <div class="w-12 h-12 border border-[#d4af37]/50 rounded-sm flex items-center justify-center">
+                            <i class="fas fa-satellite-dish text-2xl text-[#d4af37]"></i>
+                        </div>
+                        <div>
+                            <p class="text-[10px] uppercase tracking-widest text-gray-500">Monitoreo Inteligente</p>
+                            <h4 class="text-xl font-bold uppercase tracking-tighter">AIN · Monitorea tu Flota</h4>
+                        </div>
+                    </div>
+                    <p class="text-gray-500 font-light text-sm leading-relaxed mb-6">
+                        Monitoreo inteligente para flotas en tiempo real 24/7. Visibilidad total mediante Dashboard Power BI y control de riesgo con Inteligencia Artificial para flotas pesadas y ligeras.
+                    </p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-start space-x-3 text-sm text-gray-400">
+                            <i class="fas fa-check text-[#d4af37] mt-0.5"></i>
+                            <span>Integración con tu GPS actual sin necesidad de cambios costosos</span>
+                        </li>
+                        <li class="flex items-start space-x-3 text-sm text-gray-400">
+                            <i class="fas fa-check text-[#d4af37] mt-0.5"></i>
+                            <span>Alertamiento en tiempo real: riesgo, velocidad, cansancio y distracción del operador</span>
+                        </li>
+                        <li class="flex items-start space-x-3 text-sm text-gray-400">
+                            <i class="fas fa-check text-[#d4af37] mt-0.5"></i>
+                            <span>Dashboard Power BI con visibilidad total de tu operación</span>
+                        </li>
+                    </ul>
+                    <a href="#contacto" class="text-[10px] uppercase tracking-[0.2em] font-bold text-[#d4af37] hover:underline">Conocer más &rarr;</a>
+                </div>
+
+            </div>
+
+            <!-- Cobertura de seguros -->
+            <div class="premium-card p-10 text-center">
+                <i class="fas fa-file-shield text-4xl text-[#d4af37] mb-4"></i>
+                <h4 class="text-xl font-bold mb-3 uppercase tracking-tighter">Cobertura de Seguros</h4>
+                <p class="text-gray-500 font-light text-sm max-w-2xl mx-auto leading-relaxed">
+                    AI27 puede ayudarte a obtener mejores condiciones en tu póliza de seguro de flota o carga a través de nuestros socios. Contacta a tu agente o broker para solicitar cobertura con AI27.
+                </p>
+                <a href="#contacto" class="inline-block mt-6 btn-gold px-8 py-3 rounded-sm uppercase text-xs tracking-widest">Solicitar Condiciones</a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ============================================================
+         OPERACIONES (ESTADÍSTICAS)
+    ============================================================ -->
+    <section id="operaciones" class="py-24 bg-black">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h3 class="text-[#d4af37] font-semibold tracking-[0.3em] uppercase mb-2">Nuestras Operaciones</h3>
+                <h2 class="text-4xl font-bold">Números que Respaldan Nuestra Excelencia</h2>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
+                <div class="stat-card">
+                    <p class="text-3xl md:text-4xl font-bold text-[#d4af37] mb-2">0.04%</p>
+                    <p class="text-[10px] uppercase tracking-widest text-gray-500 leading-relaxed">Reducción de Siniestralidad con IA</p>
+                </div>
+                <div class="stat-card">
+                    <p class="text-3xl md:text-4xl font-bold text-[#d4af37] mb-2">900K</p>
+                    <p class="text-[10px] uppercase tracking-widest text-gray-500 leading-relaxed">Viajes Monitoreados al Mes</p>
+                </div>
+                <div class="stat-card">
+                    <p class="text-3xl md:text-4xl font-bold text-[#d4af37] mb-2">704K</p>
+                    <p class="text-[10px] uppercase tracking-widest text-gray-500 leading-relaxed">Predicciones Diarias</p>
+                </div>
+                <div class="stat-card">
+                    <p class="text-3xl md:text-4xl font-bold text-[#d4af37] mb-2">2 MM</p>
+                    <p class="text-[10px] uppercase tracking-widest text-gray-500 leading-relaxed">Datos Recopilados al Mes</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="stat-card">
+                    <i class="fas fa-truck-fast text-2xl text-[#d4af37] mb-4"></i>
+                    <p class="text-2xl font-bold text-white mb-1">12,000</p>
+                    <p class="text-[10px] uppercase tracking-widest text-gray-500">Líneas de Transporte Protegidas</p>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-coins text-2xl text-[#d4af37] mb-4"></i>
+                    <p class="text-2xl font-bold text-white mb-1">$47,000 M</p>
+                    <p class="text-[10px] uppercase tracking-widest text-gray-500">Pesos en Patrimonio Protegidos por Año</p>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-globe-americas text-2xl text-[#d4af37] mb-4"></i>
+                    <p class="text-2xl font-bold text-white mb-1">Nacional e Internacional</p>
+                    <p class="text-[10px] uppercase tracking-widest text-gray-500">Cobertura en todo el Continente Americano</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ============================================================
+         NUESTROS CLIENTES
+    ============================================================ -->
+    <section class="py-20 bg-[#0d0d0d]">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h3 class="text-[#d4af37] font-semibold tracking-[0.3em] uppercase mb-2">Nuestros Clientes</h3>
+            <h2 class="text-4xl font-bold mb-6">Confianza que Construye Reputación</h2>
+            <p class="text-gray-500 max-w-2xl mx-auto font-light leading-relaxed mb-12">
+                Nuestros clientes confían en nuestras herramientas tecnológicas y productos a lo largo de los años, creando una reputación impecable en sectores como <span class="text-white">Retail, Química y Farmacéutica, Comercio Electrónico, Tecnología, Alimentos y Bebidas</span>, entre otros.
+            </p>
+            <div class="flex flex-wrap justify-center gap-6">
+                <span class="border border-white/10 px-8 py-3 text-xs uppercase tracking-widest text-gray-400 hover:border-[#d4af37] hover:text-white transition-all cursor-default">Retail</span>
+                <span class="border border-white/10 px-8 py-3 text-xs uppercase tracking-widest text-gray-400 hover:border-[#d4af37] hover:text-white transition-all cursor-default">Química & Farmacéutica</span>
+                <span class="border border-white/10 px-8 py-3 text-xs uppercase tracking-widest text-gray-400 hover:border-[#d4af37] hover:text-white transition-all cursor-default">Comercio Electrónico</span>
+                <span class="border border-white/10 px-8 py-3 text-xs uppercase tracking-widest text-gray-400 hover:border-[#d4af37] hover:text-white transition-all cursor-default">Tecnología</span>
+                <span class="border border-white/10 px-8 py-3 text-xs uppercase tracking-widest text-gray-400 hover:border-[#d4af37] hover:text-white transition-all cursor-default">Alimentos & Bebidas</span>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ============================================================
+         FOOTER / CONTACTO
+    ============================================================ -->
+    <footer id="contacto" class="bg-black pt-24 pb-12">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-12 mb-20">
+
+                <div class="col-span-2">
+                    <div class="flex items-center space-x-3 mb-8">
+                        <svg width="36" height="36" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M22 2 L40 10 L40 24 C40 34 32 40 22 43 C12 40 4 34 4 24 L4 10 Z"
+                                  fill="none" stroke="#d4af37" stroke-width="1.5"/>
+                            <text x="22" y="27" text-anchor="middle" font-family="'Lexend Deca',sans-serif"
+                                  font-size="13" font-weight="700" fill="#d4af37">27</text>
+                        </svg>
+                        <span class="logo-text text-xl font-bold tracking-tighter italic">AI27 PREDICTIVE</span>
+                    </div>
+                    <p class="text-gray-500 font-light max-w-sm mb-8">
+                        Elevando los estándares de seguridad global a través de la inteligencia artificial y la excelencia táctica. Cobertura Nacional e Internacional en todo el continente americano.
+                    </p>
+                </div>
+
+                <div>
+                    <h5 class="text-xs uppercase tracking-[0.3em] font-bold mb-6 text-white">Navegación</h5>
+                    <ul class="space-y-4 text-gray-500 text-sm font-light">
+                        <li><a href="#" class="hover:text-white transition-colors">Inicio</a></li>
+                        <li><a href="#ais-secure" class="hover:text-white transition-colors">AIS Secure Mobility</a></li>
+                        <li><a href="#ain" class="hover:text-white transition-colors">AIN – Monitoreo de Flota</a></li>
+                        <li><a href="#operaciones" class="hover:text-white transition-colors">Operaciones</a></li>
+                        <li><a href="#galeria" class="hover:text-white transition-colors">Galería Visual</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h5 class="text-xs uppercase tracking-[0.3em] font-bold mb-6 text-white">Informes Directos</h5>
+                    <ul class="space-y-4 text-gray-500 text-sm font-light">
+                        <li class="text-white font-semibold">Lic. Gabriel Muñoz</li>
+                        <li>
+                            <a href="mailto:gmunoz@AI27.com" class="hover:text-[#d4af37] transition-colors">
+                                <i class="fas fa-envelope mr-2 text-[#d4af37]"></i>gmunoz@AI27.com
+                            </a>
+                        </li>
+                        <li>
+                            <a href="tel:5619036864" class="hover:text-[#d4af37] transition-colors">
+                                <i class="fas fa-phone-alt mr-2 text-[#d4af37]"></i>56 1903 6864
+                            </a>
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt mr-2 text-[#d4af37]"></i>
+                            <span>Tecnoparque · Eje 5 Norte 990<br>
+                            <span class="pl-5">Santa Bárbara, Azcapotzalco</span><br>
+                            <span class="pl-5">CP 02230, CDMX, México</span></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-white/5 pt-12 text-center">
+                <p class="text-[10px] text-gray-700 uppercase tracking-widest">
+                    &copy; 2025 AI27 Predictive Intelligence · Lic. Gabriel Muñoz · gmunoz@AI27.com · 56 1903 6864
+                </p>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- ============================================================
+         SCRIPTS
+    ============================================================ -->
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            nav.style.backgroundColor = window.scrollY > 50
+                ? 'rgba(0, 0, 0, 0.95)'
+                : 'rgba(10, 10, 10, 0.8)';
+        });
+    </script>
+</body>
+</html>
